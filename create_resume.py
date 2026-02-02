@@ -3,115 +3,125 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from reportlab.lib import colors
-from datetime import datetime
 
 # Create PDF
 pdf_path = "public/Avinash_Bansode_Resume.pdf"
-doc = SimpleDocTemplate(pdf_path, pagesize=letter, topMargin=0.5*inch, bottomMargin=0.5*inch)
+doc = SimpleDocTemplate(pdf_path, pagesize=letter, topMargin=0.4*inch, bottomMargin=0.4*inch, leftMargin=0.5*inch, rightMargin=0.5*inch)
 story = []
 
 # Styles
-styles = getSampleStyleSheet()
 title_style = ParagraphStyle(
-    'CustomTitle',
-    parent=styles['Heading1'],
-    fontSize=24,
-    textColor=colors.HexColor('#1a1a1a'),
-    spaceAfter=6,
+    'Title',
+    fontSize=20,
+    textColor=colors.HexColor('#000000'),
+    spaceAfter=2,
+    alignment=0,
+    fontName='Helvetica-Bold'
+)
+
+contact_style = ParagraphStyle(
+    'Contact',
+    fontSize=9,
+    textColor=colors.HexColor('#333333'),
+    spaceAfter=8,
     alignment=0
 )
 
-heading_style = ParagraphStyle(
-    'CustomHeading',
-    parent=styles['Heading2'],
-    fontSize=12,
-    textColor=colors.HexColor('#333333'),
+section_heading_style = ParagraphStyle(
+    'SectionHeading',
+    fontSize=11,
+    textColor=colors.HexColor('#000000'),
     spaceAfter=6,
-    spaceBefore=10,
+    spaceBefore=8,
     fontName='Helvetica-Bold',
-    borderColor=colors.HexColor('#6d28d9'),
-    borderWidth=1,
-    borderPadding=5,
+    borderColor=colors.HexColor('#000000'),
+    borderWidth=0.5,
+    borderPadding=4
 )
 
-normal_style = ParagraphStyle(
-    'CustomNormal',
-    parent=styles['Normal'],
-    fontSize=10,
-    leading=12
+body_style = ParagraphStyle(
+    'Body',
+    fontSize=9,
+    leading=11,
+    spaceAfter=4
 )
 
-# Title
-story.append(Paragraph("Avinash Bansode", title_style))
-story.append(Paragraph("Pune, India | +91-7829-505083 | avinashbansode08@gmail.com", normal_style))
-story.append(Spacer(1, 0.15*inch))
+# Title and Contact
+story.append(Paragraph("AVINASH BANSODE", title_style))
+story.append(Paragraph("Pune, India | +91-7829-505083 | avinashbansode08@gmail.com | linkedin.com/in/avinashbansode08", contact_style))
 
 # Career Objective
-story.append(Paragraph("Career Objective", heading_style))
-objective_text = """Motivated and detail-oriented Frontend and Full-Stack Developer with strong fundamentals in web technologies. Seeking an entry-level opportunity in web development to contribute to real-world projects and continuously enhance my technical skills."""
-story.append(Paragraph(objective_text, normal_style))
-story.append(Spacer(1, 0.1*inch))
+story.append(Paragraph("CAREER OBJECTIVE", section_heading_style))
+objective_text = "Motivated and detail-oriented Frontend and Full-Stack Developer with strong fundamentals in web technologies. Seeking an entry-level opportunity in web development to contribute to real-world projects and continuously enhance any technical skills."
+story.append(Paragraph(objective_text, body_style))
+story.append(Spacer(1, 0.08*inch))
 
 # Technical Skills
-story.append(Paragraph("Technical Skills", heading_style))
+story.append(Paragraph("TECHNICAL SKILLS", section_heading_style))
 skills_data = [
-    ["Frontend UI/UX", "HTML5, CSS3, JavaScript, React"],
-    ["Tools & Git", "Git, GitHub, VS Code"],
-    ["Basics", "REST APIs, JSON, Browser Debugging"],
+    ["<b>Frontend UI/UX:</b>", "HTML5, CSS3, JavaScript, React (ES6+), React"],
+    ["<b>Tools &amp; Git:</b>", "Git, GitHub, VS Code"],
+    ["<b>Basics:</b>", "REST APIs, JSON, Browser Debugging"],
 ]
-skills_table = Table(skills_data, colWidths=[1.5*inch, 3.5*inch])
+skills_table = Table(skills_data, colWidths=[1.3*inch, 4.2*inch])
 skills_table.setStyle(TableStyle([
     ('FONT', (0, 0), (-1, -1), 'Helvetica', 9),
     ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-    ('LEFTPADDING', (0, 0), (-1, -1), 5),
+    ('LEFTPADDING', (0, 0), (-1, -1), 0),
     ('RIGHTPADDING', (0, 0), (-1, -1), 5),
+    ('TOPPADDING', (0, 0), (-1, -1), 2),
+    ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
 ]))
 story.append(skills_table)
-story.append(Spacer(1, 0.1*inch))
+story.append(Spacer(1, 0.08*inch))
 
 # Projects
-story.append(Paragraph("Projects", heading_style))
+story.append(Paragraph("PROJECTS", section_heading_style))
 
-project1_title = Paragraph("<b>Hotel Management System (React's UI)</b>", normal_style)
-project1_desc = Paragraph("Designed professional and responsive Hotel UI using React's UI. Implemented modern, user-friendly features, property listings, and booking experience.", normal_style)
-story.append(project1_title)
-story.append(project1_desc)
+story.append(Paragraph("<b>Hotel Management System (React's UI)</b>", body_style))
+project1_points = [
+    "• Designed professional and responsive Hotel UI using React",
+    "• Implemented modern bookings, property listings, and availability and user-friendly experience"
+]
+for point in project1_points:
+    story.append(Paragraph(point, body_style))
+
+story.append(Spacer(1, 0.05*inch))
+
+story.append(Paragraph("<b>Shopify Multivendor Platform</b>", body_style))
+project2_points = [
+    "• Developed a modern shopping website interface with product cards and navigation",
+    "• Implemented secure filtering and structured layouts and intuitive layout devices"
+]
+for point in project2_points:
+    story.append(Paragraph(point, body_style))
+
 story.append(Spacer(1, 0.08*inch))
-
-project2_title = Paragraph("<b>Shopify Multivendor Platform</b>", normal_style)
-project2_desc = Paragraph("Developed a modern shopping website interface with product cards and navigation. Implemented secure filtering and intuitive layout devices for desktop and user-friendly experience.", normal_style)
-story.append(project2_title)
-story.append(project2_desc)
-story.append(Spacer(1, 0.08*inch))
-
-project3_title = Paragraph("<b>Enhanced Structured Layouts</b>", normal_style)
-project3_desc = Paragraph("Optimized UI for desktop and mobile devices", normal_style)
-story.append(project3_title)
-story.append(project3_desc)
-story.append(Spacer(1, 0.1*inch))
 
 # Education
-story.append(Paragraph("Education", heading_style))
+story.append(Paragraph("EDUCATION", section_heading_style))
 education_data = [
-    ["Bachelor of Computer Applications (B.C.A)", "2022 - 2025"],
-    ["Higher Secondary Certificate (12th)", "Percentage: 48%"],
-    ["Secondary School Certificate (10th)", "Percentage: 48%"],
+    ["<b>Bachelor of Computer Applications (B.C.A)</b>", "2022 - 2025"],
+    ["Sarthak College (Swati)", ""],
+    ["<b>Higher Secondary Certificate (12th)</b>", "Percentage: 48%"],
+    ["<b>Secondary School Certificate (10th)</b>", "Percentage: 48%"],
 ]
 education_table = Table(education_data, colWidths=[3.5*inch, 1.5*inch])
 education_table.setStyle(TableStyle([
     ('FONT', (0, 0), (-1, -1), 'Helvetica', 9),
     ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-    ('LEFTPADDING', (0, 0), (-1, -1), 5),
+    ('LEFTPADDING', (0, 0), (-1, -1), 0),
     ('RIGHTPADDING', (0, 0), (-1, -1), 5),
+    ('TOPPADDING', (0, 0), (-1, -1), 2),
+    ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
 ]))
 story.append(education_table)
-story.append(Spacer(1, 0.1*inch))
+story.append(Spacer(1, 0.08*inch))
 
 # Experience
-story.append(Paragraph("Experience", heading_style))
-exp_text = "Fresher - Interested in gaining through academic projects and self-learning in frontend development using React."
-story.append(Paragraph(exp_text, normal_style))
+story.append(Paragraph("EXPERIENCE", section_heading_style))
+story.append(Paragraph("<b>Fresher</b> - Interested in gaining through academic projects and self-learning in frontend development using React.", body_style))
 
 # Build PDF
 doc.build(story)
-print(f"✓ Resume created successfully: {pdf_path}")
+print("✓ Resume created successfully: public/Avinash_Bansode_Resume.pdf")
