@@ -52,6 +52,11 @@ const Work = () => {
                 <motion.div style={{ x }} className="project-list">
                     <div className="work-heading">
                         <h2>SELECTED <br /> <span className="highlight-text">ACHIEVEMENTS</span></h2>
+                        <div className="work-actions">
+                            <a href="/Avinash_Bansode_Resume.pdf" download="Avinash_Bansode_Resume.pdf" className="btn btn-resume">
+                                Download Resume
+                            </a>
+                        </div>
                     </div>
                     {projects.map((project, index) => (
                         <motion.div

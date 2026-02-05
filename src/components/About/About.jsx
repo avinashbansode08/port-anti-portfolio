@@ -65,6 +65,18 @@ const About = () => {
                             <p>Dedication</p>
                         </div>
                     </motion.div>
+
+                    <motion.div
+                        className="about-actions"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.5 }}
+                        viewport={{ once: true }}
+                    >
+                        <a href="/Avinash_Bansode_Resume.pdf" download="Avinash_Bansode_Resume.pdf" className="btn btn-resume">
+                            Download Resume
+                        </a>
+                    </motion.div>
                 </div>
             </div>
         </section>
