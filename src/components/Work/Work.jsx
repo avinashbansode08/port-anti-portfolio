@@ -4,8 +4,22 @@ import { FiX, FiZoomIn } from 'react-icons/fi';
 import './Work.css';
 
 const projects = [
-
-
+    {
+        title: "JM-PRAVIN-LAB",
+        category: "Web Application",
+        image: `${import.meta.env.BASE_URL}pravin-lab.png`,
+        year: "2024",
+        description: "Pravin Lab project - Full-stack web application with modern technologies.",
+        link: "https://github.com/RB1600/JM-Pravin-Lab"
+    },
+    {
+        title: "HOTEL OS",
+        category: "Hotel Management",
+        image: `${import.meta.env.BASE_URL}hotel-os.png`,
+        year: "2024",
+        description: "Hotel Operating System - Complete hotel management solution.",
+        link: "https://github.com"
+    },
     {
         title: "STATE CHAMPION",
         category: "Sports Excellence",
@@ -51,7 +65,7 @@ const Work = () => {
             <div className="sticky-container">
                 <motion.div style={{ x }} className="project-list">
                     <div className="work-heading">
-                        <h2>SELECTED <br /> <span className="highlight-text">ACHIEVEMENTS</span></h2>
+                        <h2>PROJECTS & <br /> <span className="highlight-text">ACHIEVEMENTS</span></h2>
                         <div className="work-actions">
                             <a href="/avi.resume.pdf" download="avi.resume.pdf" className="btn btn-resume">
                                 Download Resume
@@ -62,7 +76,13 @@ const Work = () => {
                         <motion.div
                             key={index}
                             className="project-card"
-                            onClick={() => setSelectedImage(project.image)}
+                            onClick={() => {
+                                if (project.link) {
+                                    window.open(project.link, '_blank');
+                                } else {
+                                    setSelectedImage(project.image);
+                                }
+                            }}
                             whileHover={{ scale: 1.02 }}
                             transition={{ duration: 0.3 }}
                         >
@@ -72,7 +92,7 @@ const Work = () => {
                                 <img src={project.image} alt={project.title} loading="lazy" />
                                 <div className="overlay">
                                     <FiZoomIn className="zoom-icon" />
-                                    <span>View Certificate</span>
+                                    <span>{project.link ? "View on GitHub" : "View Certificate"}</span>
                                 </div>
                             </div>
                             <div className="project-info">
