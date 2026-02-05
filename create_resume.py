@@ -104,7 +104,7 @@ education_data = [
     ["<b>Bachelor of Computer Applications (B.C.A)</b>", "2022 - 2025"],
     ["Sarthak College (Swati)", ""],
     ["<b>Higher Secondary Certificate (12th)</b>", "Percentage: 48%"],
-    ["<b>Secondary School Certificate (10th)</b>", "Percentage: 48%"],
+    ["<b>Secondary School Certificate (10th)</b>", "Percentage: 66%"],
 ]
 education_table = Table(education_data, colWidths=[3.5*inch, 1.5*inch])
 education_table.setStyle(TableStyle([
