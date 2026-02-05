@@ -47,7 +47,7 @@ const Navbar = () => {
         { name: "Experience", to: "#experience" },
         { name: "Projects", to: "#work" },
         { name: "Contact", to: "#contact" },
-        { name: "Resume", to: "/Avinash_Bansode_Resume.pdf", download: "Avinash_Bansode_Resume.pdf" },
+        { name: "Resume", to: "/avi.resume.pdf", download: "avi.resume.pdf" },
     ];
 
     const scrollToSection = (id) => {

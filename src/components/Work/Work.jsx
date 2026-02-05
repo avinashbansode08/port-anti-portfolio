@@ -53,7 +53,7 @@ const Work = () => {
                     <div className="work-heading">
                         <h2>SELECTED <br /> <span className="highlight-text">ACHIEVEMENTS</span></h2>
                         <div className="work-actions">
-                            <a href="/Avinash_Bansode_Resume.pdf" download="Avinash_Bansode_Resume.pdf" className="btn btn-resume">
+                            <a href="/avi.resume.pdf" download="avi.resume.pdf" className="btn btn-resume">
                                 Download Resume
                             </a>
                         </div>

@@ -73,7 +73,7 @@ const About = () => {
                         transition={{ duration: 0.6, delay: 0.5 }}
                         viewport={{ once: true }}
                     >
-                        <a href="/Avinash_Bansode_Resume.pdf" download="Avinash_Bansode_Resume.pdf" className="btn btn-resume">
+                        <a href="/avi.resume.pdf" download="avi.resume.pdf" className="btn btn-resume">
                             Download Resume
                         </a>
                     </motion.div>

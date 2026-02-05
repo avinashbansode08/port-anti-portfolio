@@ -88,7 +88,7 @@ const Hero = () => {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.9, duration: 0.8 }}
                 >
-                    <a href="/Avinash_Bansode_Resume.pdf" download="Avinash_Bansode_Resume.pdf" className="btn btn-resume">
+                    <a href="/avi.resume.pdf" download="avi.resume.pdf" className="btn btn-resume">
                         <FiDownload className="btn-icon" /> Resume
                     </a>
                     <a href="#contact" className="btn btn-hire">
