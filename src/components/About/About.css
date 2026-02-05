@@ -106,6 +106,32 @@
     letter-spacing: 0.1em;
 }
 
+.about-actions {
+    margin-top: 3rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
 @media (max-width: 1024px) {
     .about-container {
         grid-template-columns: 1fr;
